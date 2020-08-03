@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Install dependencies") {
             steps {
-                sh "composer install"
+                sh "composer install --prefer-source --no-interaction --no-progress --no-suggestion"
             }
         }
         stage("Unit test") {
