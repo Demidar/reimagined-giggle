@@ -6,5 +6,5 @@ use Symfony\Component\HttpFoundation\Request;
 
 interface Page
 {
-    public function render(Request $request): void;
+    public function render(Request $request): string;
 }

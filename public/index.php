@@ -23,11 +23,10 @@ $matcher = new UrlMatcher($routes, $context);
 try {
     $routeAttributes = $matcher->match($request->getPathInfo());
     $route = $routeAttributes['_route'];
-    ob_start();
     $pageNamespace = sprintf('\\App\\pages\\%s', ucfirst($route));
-    $page = (new $pageNamespace)->render($request);
+    $html = (new $pageNamespace)->render($request);
 
-    $response = new Response(ob_get_clean());
+    $response = new Response($html);
 } catch (ResourceNotFoundException $exception) {
     $response = new Response('Not Found', 404);
 } catch (Exception $exception) {
